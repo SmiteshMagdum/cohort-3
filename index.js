@@ -3,9 +3,9 @@ const app = express();
 
 
 
-app.get("/add", function (req, res) {
-  const a = parseInt(req.query.a);
-  const b = parseInt(req.query.b);
+app.get("/add/:a/:b", function (req, res) {
+  const a = parseInt(req.params.a);
+  const b = parseInt(req.params.b);
 
   const sum = a + b;
 
@@ -13,9 +13,9 @@ app.get("/add", function (req, res) {
     result: sum
   });
 });
-app.get("/divide", function (req, res) {
-  const a = parseInt(req.query.a);
-  const b = parseInt(req.query.b);
+app.get("/divide/:a/:b", function (req, res) {
+  const a = parseInt(req.params.a);
+  const b = parseInt(req.params.b);
 
   const divide = a / b;
 
@@ -24,8 +24,8 @@ app.get("/divide", function (req, res) {
   });
 });
 app.get("/multiply", function (req, res) {
-  const a = parseInt(req.query.a);
-  const b = parseInt(req.query.b);
+  const a = parseInt(req.params.a);
+  const b = parseInt(req.params.b);
 
   const multiply = a * b;
 
@@ -34,8 +34,8 @@ app.get("/multiply", function (req, res) {
   });
 });
 app.get("/sub", function (req, res) {
-  const a = parseInt(req.query.a);
-  const b = parseInt(req.query.b);
+  const a = parseInt(req.params.a);
+  const b = parseInt(req.params.b);
 
   const subtract = a - b;
 

@@ -1,20 +1,13 @@
 const express = require("express");
-
+const bodyParser = require("body-parser")
 const app = express();
-let requestCounter = 0
-function middleWare(req, res, next){
-  requestCounter = requestCounter + 1 
-  console.log(`request Count is ${requestCounter}`);
-  
-   next()
-   
-}
 
-app.use(middleWare)
+app.use(bodyParser.json())
 
-app.get("/sum", function(req, res) {
-    const a = parseInt(req.query.a);
-    const b = parseInt(req.query.b);
+app.post("/sum", function(req, res) {
+  console.log(req.body);
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
  
     res.json({
         ans: a + b
@@ -22,29 +15,5 @@ app.get("/sum", function(req, res) {
     
 });
 
-app.get("/multiply", function(req, res) {
-    const a = req.query.a;
-    const b = req.query.b;
-    res.json({
-        ans: a * b
-    })
-});
-
-app.get("/divide", function(req, res) {
-    const a = req.query.a;
-    const b = req.query.b;
-    res.json({
-        ans: a / b
-    })
-
-});
-
-app.get("/subtract", function(req, res) {
-    const a = parseInt(req.query.a);
-    const b = parseInt(req.query.b);
-    res.json({
-        ans: a - b
-    })
-});
 
 app.listen(3000);

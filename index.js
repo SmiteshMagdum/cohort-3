@@ -1,19 +1,19 @@
 const express = require("express");
-const bodyParser = require("body-parser")
+const cors = require("cors");
+
 const app = express();
+app.use(cors())
+app.use(express.json())
 
-app.use(bodyParser.json())
-
-app.post("/sum", function(req, res) {
-  console.log(req.body);
-    const a = parseInt(req.body.a);
-    const b = parseInt(req.body.b);
- 
-    res.json({
-        ans: a + b
-    })
-    
-});
+app.post("/sum", function(req,res){
+  const a = parseInt(req.body.a)
+  const b = parseInt(req.body.b)
 
 
-app.listen(3000);
+  res.json({
+    answer: a + b
+  })
+})
+
+
+app.listen(5000);
